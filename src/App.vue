@@ -5,7 +5,7 @@ import { useAlertStore } from './stores/alertStore'
 const alertStore = useAlertStore()
 
 const logoText = ['ANLCI']
-const serviceTitle = 'EVA - Entreprises'
+const serviceTitle = 'EVAPRO'
 const serviceDescription =
   'Outil d’évaluation pour la gestion des situations d’illettrisme en milieu professionnel'
 const placeholder = ''
