@@ -96,6 +96,13 @@ const prevSituation = () => {
   display: flex;
 }
 
+@media (min-width: 78em) {
+  .fr-container {
+    max-width: inherit;
+    padding-right: 0;
+  }
+}
+
 .side-menu {
   width: 384px;
 }
@@ -105,6 +112,11 @@ const prevSituation = () => {
 }
 
 @media screen and (max-width: 768px) {
+  .fr-container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
   .page-situation {
     flex-direction: column;
   }
