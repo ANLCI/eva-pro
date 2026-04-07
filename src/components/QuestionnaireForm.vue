@@ -240,7 +240,9 @@ onMounted(() => {
 <template>
   <div class="questionnaire-form">
     <div v-if="questions" class="questionnaire-container">
-      <ProgressBar :current-value="currentQuestionIndex + 1" :max-value="questions.length" />
+      <div class="questionnaire-progress-bar">
+        <ProgressBar :current-value="currentQuestionIndex + 1" :max-value="questions.length" />
+      </div>
 
       <Transition name="question-slide" mode="out-in">
         <div v-if="currentQuestion" :key="currentQuestion.nom_technique" class="questionnaire">
@@ -338,7 +340,7 @@ onMounted(() => {
   }
 
   .questionnaire {
-    padding: 0 1rem;
+    padding: 0 2rem;
     gap: 1.5rem;
   }
 }

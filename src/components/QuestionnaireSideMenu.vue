@@ -128,7 +128,7 @@ watch(
 .questionnaire-side-menu-header {
   display: flex;
   flex-direction: column;
-  padding-top: 2.5rem;
+  margin-top: 4rem;
   padding-right: 1.5rem;
   padding-bottom: 1.5rem;
   box-shadow: inset -1px 0 0 0 var(--border-default-grey);
@@ -173,13 +173,16 @@ watch(
 
 @media screen and (max-width: 768px) {
   .questionnaire-side-menu-header {
+    margin-top: 0;
+    padding-right: 1rem;
+    padding-left: 1rem;
     padding-top: 1.5rem;
-    padding-right: 0;
     box-shadow: none;
   }
 
   .questionnaire-side-menu {
-    padding-left: 0;
+    padding-left: 1rem;
+    padding-right: 1rem;
     margin-top: 0;
   }
 }
