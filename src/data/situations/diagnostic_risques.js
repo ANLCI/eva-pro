@@ -11,6 +11,7 @@ export const Q1IC01 = {
     { nom_technique: 'Q1IC01R02', intitule: '50 à 249 salariés/agents', score: 0 },
     { nom_technique: 'Q1IC01R03', intitule: '11 à 49 salariés/agents', score: 0 },
     { nom_technique: 'Q1IC01R04', intitule: '1 à 10 salariés/agents', score: 0 },
+    { nom_technique: 'Q1IC01R05', intitule: 'Je ne sais pas', score: 0 },
   ],
 }
 
@@ -22,6 +23,7 @@ export const Q1IC02 = {
     { nom_technique: 'Q1IC02R01', intitule: '50 ans et plus', score: 2 },
     { nom_technique: 'Q1IC02R02', intitule: 'Entre 30 et 50 ans', score: 0 },
     { nom_technique: 'Q1IC02R03', intitule: 'Moins de 30 ans', score: 1 },
+    { nom_technique: 'Q1IC02R04', intitule: 'Je ne sais pas', score: 1 },
   ],
 }
 
@@ -55,6 +57,7 @@ export const Q1IC03 = {
     { nom_technique: 'Q1IC03R015', intitule: 'Sécurité', score: 1 },
     { nom_technique: 'Q1IC03R016', intitule: 'Transport/Logistique', score: 1 },
     { nom_technique: 'Q1IC03R017', intitule: 'Autre', score: 0 },
+    { nom_technique: 'Q1IC03R018', intitule: 'Je ne sais pas', score: 2 },
   ],
 }
 
@@ -73,6 +76,7 @@ export const Q1IC05 = {
     { nom_technique: 'Q1IC05R02', intitule: "Une culture de l'oral", score: 0 },
     { nom_technique: 'Q1IC05R03', intitule: 'Une culture du numérique', score: 1 },
     { nom_technique: 'Q1IC05R04', intitule: 'Un mixte', score: 1 },
+    { nom_technique: 'Q1IC05R05', intitule: 'Je ne sais pas', score: 1 },
   ],
 }
 
@@ -130,7 +134,7 @@ export const Q1GC01 = {
     },
     { nom_technique: 'Q1GC01R02', intitule: 'Plus de 50 % à la population TAM/Cadres', score: 1 },
     { nom_technique: 'Q1GC01R03', intitule: 'Plus de 75 % à la population TAM/Cadres', score: 2 },
-    { nom_technique: 'Q1GC01R04', intitule: 'Je Ne sais pas', score: 0 },
+    { nom_technique: 'Q1GC01R04', intitule: 'Je ne sais pas', score: 0 },
   ],
 }
 
@@ -159,6 +163,7 @@ export const Q1GC02 = {
       intitule: '100 % des salariés suivent une formation au moins une fois par an',
       score: 0,
     },
+    { nom_technique: 'Q1GC02R05', intitule: 'Je ne sais pas', score: 1 },
   ],
 }
 
@@ -170,6 +175,7 @@ export const Q1GC03 = {
   reponses: [
     { nom_technique: 'Q1GC03R01', intitule: 'Oui', score: 2 },
     { nom_technique: 'Q1GC03R02', intitule: 'Non', score: 0 },
+    { nom_technique: 'Q1GC03R03', intitule: 'Je ne sais pas', score: 2 },
   ],
 }
 
@@ -181,6 +187,7 @@ export const Q1GC04 = {
   reponses: [
     { nom_technique: 'Q1GC04R01', intitule: 'Oui', score: 2 },
     { nom_technique: 'Q1GC04R02', intitule: 'Non', score: 0 },
+    { nom_technique: 'Q1GC04R03', intitule: 'Je ne sais pas', score: 2 },
   ],
 }
 
@@ -194,6 +201,7 @@ export const Q1GC05 = {
     { nom_technique: 'Q1GC05R02', intitule: 'Oui, probablement', score: 1 },
     { nom_technique: 'Q1GC05R03', intitule: 'Non, je ne crois pas', score: 1 },
     { nom_technique: 'Q1GC05R04', intitule: "Non, c'est impossible", score: 0 },
+    { nom_technique: 'Q1GC05R05', intitule: 'Je ne sais pas', score: 2 },
   ],
 }
 
@@ -206,6 +214,7 @@ export const Q1GC06 = {
     { nom_technique: 'Q1GC06R01', intitule: 'Oui', score: 0 },
     { nom_technique: 'Q1GC06R02', intitule: 'Non', score: 0 },
     { nom_technique: 'Q1GC06R03', intitule: 'En cours', score: 0 },
+    { nom_technique: 'Q1GC06R04', intitule: 'Je ne sais pas', score: 0 },
   ],
 }
 
@@ -226,6 +235,7 @@ export const Q1PR01 = {
       score: 1,
     },
     { nom_technique: 'Q1PR01R03', intitule: 'Oui, pour tous les postes', score: 0 },
+    { nom_technique: 'Q1PR01R04', intitule: 'Je ne sais pas', score: 2 },
   ],
 }
 
@@ -246,6 +256,7 @@ export const Q1PR02 = {
       score: 1,
     },
     { nom_technique: 'Q1PR02R03', intitule: 'Oui, pour tous les postes', score: 0 },
+    { nom_technique: 'Q1PR02R04', intitule: 'Je ne sais pas', score: 2 },
   ],
 }
 
@@ -258,6 +269,7 @@ export const Q1TO01 = {
     { nom_technique: 'Q1TO01R01', intitule: 'Oui, en majorité', score: 3 },
     { nom_technique: 'Q1TO01R02', intitule: 'Oui, pour une partie', score: 1 },
     { nom_technique: 'Q1TO01R03', intitule: 'Non', score: 0 },
+    { nom_technique: 'Q1TO01R04', intitule: 'Je ne sais pas', score: 2 },
   ],
 }
 
@@ -269,6 +281,7 @@ export const Q1TO02 = {
     { nom_technique: 'Q1TO02R01', intitule: 'Très avancée', score: 0 },
     { nom_technique: 'Q1TO02R02', intitule: 'En cours', score: 0 },
     { nom_technique: 'Q1TO02R03', intitule: 'A mettre en place', score: 0 },
+    { nom_technique: 'Q1TO02R04', intitule: 'Je ne sais pas', score: 0 },
   ],
 }
 
@@ -279,6 +292,7 @@ export const Q1TO03 = {
   reponses: [
     { nom_technique: 'Q1TO03R01', intitule: 'Oui', score: 0 },
     { nom_technique: 'Q1TO03R02', intitule: 'Non', score: 0 },
+    { nom_technique: 'Q1TO03R03', intitule: 'Je ne sais pas', score: 0 },
   ],
 }
 
@@ -290,5 +304,6 @@ export const Q1TO04 = {
   reponses: [
     { nom_technique: 'Q1TO04R01', intitule: 'Oui', score: 0 },
     { nom_technique: 'Q1TO04R02', intitule: 'Non', score: 0 },
+    { nom_technique: 'Q1TO04R03', intitule: 'Je ne sais pas', score: 0 },
   ],
 }
