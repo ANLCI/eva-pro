@@ -22,6 +22,13 @@ export const Q2PC01 = {
       score_strategies: 0,
       score_numerique: 0,
     },
+    {
+      nom_technique: 'Q2PC01R3',
+      intitule: 'Je ne sais pas',
+      score_cout: 0,
+      score_strategies: 0,
+      score_numerique: 0,
+    },
   ],
 }
 
@@ -43,6 +50,13 @@ export const Q2PC02 = {
       intitule: 'Non',
       score_cout: 0,
       score_strategies: 0,
+      score_numerique: 0,
+    },
+    {
+      nom_technique: 'Q2PC02R3',
+      intitule: 'Je ne sais pas',
+      score_cout: 4,
+      score_strategies: 3,
       score_numerique: 0,
     },
   ],
@@ -68,6 +82,13 @@ export const Q2PC03 = {
       score_strategies: 0,
       score_numerique: 0,
     },
+    {
+      nom_technique: 'Q2PC03R3',
+      intitule: 'Je ne sais pas',
+      score_cout: 1,
+      score_strategies: 4,
+      score_numerique: 2,
+    },
   ],
 }
 
@@ -87,6 +108,13 @@ export const Q2AO01 = {
     {
       nom_technique: 'Q2AO01R2',
       intitule: 'Non',
+      score_cout: 0,
+      score_strategies: 0,
+      score_numerique: 0,
+    },
+    {
+      nom_technique: 'Q2AO01R3',
+      intitule: 'Je ne sais pas',
       score_cout: 0,
       score_strategies: 0,
       score_numerique: 0,
@@ -114,6 +142,13 @@ export const Q2AO02 = {
       score_strategies: 0,
       score_numerique: 0,
     },
+    {
+      nom_technique: 'Q2AO02R3',
+      intitule: 'Je ne sais pas',
+      score_cout: 2,
+      score_strategies: 0,
+      score_numerique: 4,
+    },
   ],
 }
 
@@ -136,6 +171,13 @@ export const Q2AO03 = {
       score_cout: 0,
       score_strategies: 0,
       score_numerique: 0,
+    },
+    {
+      nom_technique: 'Q2AO03R3',
+      intitule: 'Je ne sais pas',
+      score_cout: 4,
+      score_strategies: 0,
+      score_numerique: 3,
     },
   ],
 }
@@ -160,6 +202,13 @@ export const Q2AO04 = {
       score_strategies: 0,
       score_numerique: 0,
     },
+    {
+      nom_technique: 'Q2AO04R3',
+      intitule: 'Je ne sais pas',
+      score_cout: 4,
+      score_strategies: 0,
+      score_numerique: 2,
+    },
   ],
 }
 
@@ -179,6 +228,13 @@ export const Q2SQ01 = {
     {
       nom_technique: 'Q2SQ01R2',
       intitule: 'Non',
+      score_cout: 0,
+      score_strategies: 0,
+      score_numerique: 0,
+    },
+    {
+      nom_technique: 'Q2SQ01R3',
+      intitule: 'Je ne sais pas',
       score_cout: 0,
       score_strategies: 0,
       score_numerique: 0,
@@ -206,6 +262,13 @@ export const Q2SQ02 = {
       score_strategies: 0,
       score_numerique: 0,
     },
+    {
+      nom_technique: 'Q2SQ02R3',
+      intitule: 'Je ne sais pas',
+      score_cout: 1,
+      score_strategies: 4,
+      score_numerique: 2,
+    },
   ],
 }
 
@@ -225,6 +288,13 @@ export const Q2SQ03 = {
     {
       nom_technique: 'Q2SQ03R2',
       intitule: 'Non',
+      score_cout: 0,
+      score_strategies: 0,
+      score_numerique: 0,
+    },
+    {
+      nom_technique: 'Q2SQ03R3',
+      intitule: 'Je ne sais pas',
       score_cout: 0,
       score_strategies: 0,
       score_numerique: 0,
@@ -252,6 +322,13 @@ export const Q2SQ04 = {
       score_strategies: 0,
       score_numerique: 0,
     },
+    {
+      nom_technique: 'Q2SQ04R3',
+      intitule: 'Je ne sais pas',
+      score_cout: 2,
+      score_strategies: 3,
+      score_numerique: 2,
+    },
   ],
 }
 
@@ -271,6 +348,13 @@ export const Q2SQ05 = {
     {
       nom_technique: 'Q2SQ05R2',
       intitule: 'Non',
+      score_cout: 0,
+      score_strategies: 0,
+      score_numerique: 0,
+    },
+    {
+      nom_technique: 'Q2SQ05R3',
+      intitule: 'Je ne sais pas',
       score_cout: 0,
       score_strategies: 0,
       score_numerique: 0,
@@ -298,6 +382,13 @@ export const Q2SQ06 = {
       score_strategies: 0,
       score_numerique: 0,
     },
+    {
+      nom_technique: 'Q2SQ06R3',
+      intitule: 'Je ne sais pas',
+      score_cout: 2,
+      score_strategies: 0,
+      score_numerique: 4,
+    },
   ],
 }
 
@@ -320,6 +411,13 @@ export const Q2SQ07 = {
       score_cout: 0,
       score_strategies: 0,
       score_numerique: 0,
+    },
+    {
+      nom_technique: 'Q2SQ07R3',
+      intitule: 'Je ne sais pas',
+      score_cout: 4,
+      score_strategies: 0,
+      score_numerique: 2,
     },
   ],
 }
@@ -344,6 +442,13 @@ export const Q2MP01 = {
       score_strategies: 0,
       score_numerique: 0,
     },
+    {
+      nom_technique: 'Q2MP01R3',
+      intitule: 'Je ne sais pas',
+      score_cout: 3,
+      score_strategies: 4,
+      score_numerique: 2,
+    },
   ],
 }
 
@@ -363,6 +468,13 @@ export const Q2MP02 = {
     {
       nom_technique: 'Q2MP02R2',
       intitule: 'Non',
+      score_cout: 0,
+      score_strategies: 0,
+      score_numerique: 0,
+    },
+    {
+      nom_technique: 'Q2MP02R3',
+      intitule: 'Je ne sais pas',
       score_cout: 0,
       score_strategies: 0,
       score_numerique: 0,
@@ -390,6 +502,13 @@ export const Q2MP03 = {
       score_strategies: 0,
       score_numerique: 0,
     },
+    {
+      nom_technique: 'Q2MP03R3',
+      intitule: 'Je ne sais pas',
+      score_cout: 4,
+      score_strategies: 0,
+      score_numerique: 2,
+    },
   ],
 }
 
@@ -409,6 +528,13 @@ export const Q2MP04 = {
     {
       nom_technique: 'Q2MP04R2',
       intitule: 'Non',
+      score_cout: 0,
+      score_strategies: 0,
+      score_numerique: 0,
+    },
+    {
+      nom_technique: 'Q2MP04R3',
+      intitule: 'Je ne sais pas',
       score_cout: 0,
       score_strategies: 0,
       score_numerique: 0,
@@ -436,6 +562,13 @@ export const Q2MP05 = {
       score_strategies: 0,
       score_numerique: 0,
     },
+    {
+      nom_technique: 'Q2MP05R3',
+      intitule: 'Je ne sais pas',
+      score_cout: 0,
+      score_strategies: 0,
+      score_numerique: 0,
+    },
   ],
 }
 
@@ -458,6 +591,13 @@ export const Q2MP06 = {
       score_cout: 0,
       score_strategies: 0,
       score_numerique: 0,
+    },
+    {
+      nom_technique: 'Q2MP06R3',
+      intitule: 'Je ne sais pas',
+      score_cout: 3,
+      score_strategies: 3,
+      score_numerique: 3,
     },
   ],
 }
@@ -482,6 +622,13 @@ export const Q2MP07 = {
       score_strategies: 0,
       score_numerique: 0,
     },
+    {
+      nom_technique: 'Q2MP07R3',
+      intitule: 'Je ne sais pas',
+      score_cout: 1,
+      score_strategies: 4,
+      score_numerique: 2,
+    },
   ],
 }
 
@@ -504,6 +651,13 @@ export const Q2MP08 = {
       score_cout: 0,
       score_strategies: 0,
       score_numerique: 0,
+    },
+    {
+      nom_technique: 'Q2MP08R3',
+      intitule: 'Je ne sais pas',
+      score_cout: 1,
+      score_strategies: 3,
+      score_numerique: 2,
     },
   ],
 }
