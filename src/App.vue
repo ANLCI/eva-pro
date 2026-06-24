@@ -1,19 +1,23 @@
 <script setup>
 import { RouterView } from 'vue-router'
 import { useAlertStore } from './stores/alertStore'
+import evaproSvg from './assets/evapro.svg'
 
 const alertStore = useAlertStore()
 
-const logoText = ['ANLCI']
-const serviceTitle = 'EVAPRO'
+const logoText = ['RÉPUBLIQUE', 'FRANÇAISE']
+const operatorImgAlt = 'EVAPRO'
+const serviceTitle = 'Evapro'
+const operatorImgSrc = evaproSvg
+const operatorImgStyle = { height: '4.5rem' }
 const serviceDescription =
-  'Outil d’évaluation pour la gestion des situations d’illettrisme en milieu professionnel'
+  'Outil d’évaluation des risques liés à une maîtrise insuffisante des compétences de base dans les structures'
 const placeholder = ''
 const homeTo = '/'
 </script>
 
 <template>
-  <DsfrHeader :logo-text :service-title :service-description :placeholder :home-to />
+  <DsfrHeader :logo-text :operator-img-src :operator-img-alt :operator-img-style :service-title :service-description :placeholder :home-to />
 
   <div class="fr-container">
     <DsfrAlert
