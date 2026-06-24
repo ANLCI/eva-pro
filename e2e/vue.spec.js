@@ -31,12 +31,12 @@ test('Complète le premier questionnaire', async ({ page }) => {
 
   await selectors.labels.first().click();
 
-  page.waitForFunction(() => document.querySelector('label')?.textContent?.includes('A quelle branche votre structure est-elle rattachée ?'))
+  await page.waitForFunction(() => document.querySelector('label')?.textContent?.includes('A quelle branche votre structure est-elle rattachée ?'))
   await expect(page.locator(sousMenuThematiqueActif)).toHaveText("Profil des collaborateurs")
 
   await selectors.champTexte.fill('Finance');
 
-  await page.click('button:has-text("Valider")');
+  await page.locator('button:has-text("Valider")').click();
 
   const questionDeuxiemeSituation = "Avez-vous parfois l'impression de devoir prendre plus de temps que nécessaire pour vous assurer que vos collaborateurs ou collaboratrices ont bien compris certaines informations ?"
   await expect(page.locator('legend')).toHaveText(questionDeuxiemeSituation);
