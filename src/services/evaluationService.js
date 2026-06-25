@@ -49,6 +49,7 @@ export function getEvaluationParams(code_campagne, beneficiaire_id) {
     debutee_le: new Date().toISOString(),
     beneficiaire_id: beneficiaire_id,
     conditions_passation_attributes: conditionsPassationHelper(),
+    type: 'EvaluationEvapro',
   }
 }
 
