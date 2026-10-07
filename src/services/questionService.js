@@ -6,6 +6,15 @@ const questions = {
   evaluation_impact_general: evaluationImpact,
 }
 
+// Correspondance entre les clés du score d'un choix (campagne) et les champs
+// attendus par le serveur dans les données de l'évènement de réponse
+const CHAMPS_SCORE = {
+  risques: 'score',
+  cout: 'score_cout',
+  numerique: 'score_numerique',
+  strategies: 'score_strategies',
+}
+
 export function detailPourQuestion(nomTechniqueSansVariantDeSituation, question) {
   const questionsPourSituation = questions[nomTechniqueSansVariantDeSituation]
   if (!questionsPourSituation) return undefined
@@ -17,32 +26,26 @@ export function detailPourQuestion(nomTechniqueSansVariantDeSituation, question)
   return questionDetails
 }
 
-export function reponsesPourQuestion(nomTechniqueSansVariantDeSituation, question) {
-  const questionDetails = detailPourQuestion(nomTechniqueSansVariantDeSituation, question)
-  if (!questionDetails) return undefined
-
-  return questionDetails.reponses
+export function choixPourQuestion(question, reponse) {
+  return question?.choix?.find((c) => c.nom_technique === reponse)
 }
 
-export function reponsePourQuestion(nomTechniqueSansVariantDeSituation, question, reponse) {
-  const reponses = reponsesPourQuestion(nomTechniqueSansVariantDeSituation, question)
-  if (!reponses) return null
+export function scoresDuChoix(choix) {
+  if (!choix?.score) return {}
 
-  return reponses.find((r) => r.nom_technique === reponse)
+  return Object.fromEntries(
+    Object.entries(choix.score).map(([cle, valeur]) => [
+      CHAMPS_SCORE[cle] ?? `score_${cle}`,
+      valeur,
+    ]),
+  )
 }
 
-export function scoreDeReponsePourQuestion(nomTechniqueSansVariantDeSituation, question, reponse) {
-  const reponseDetails = reponsePourQuestion(nomTechniqueSansVariantDeSituation, question, reponse)
-  const score = reponseDetails ? reponseDetails.score : 0
+export function scoreMaxPourQuestion(question) {
+  const scores = (question?.choix ?? [])
+    .map((choix) => scoresDuChoix(choix).score)
+    .filter((score) => typeof score === 'number')
+  if (!scores.length) return 0
 
-  return score
-}
-
-export function scoreMaxPourQuestion(nomTechniqueSansVariantDeSituation, question) {
-  const reponses = reponsesPourQuestion(nomTechniqueSansVariantDeSituation, question)
-  if (!reponses) return 0
-
-  const scoreMax = Math.max(...reponses.map((r) => r.score))
-
-  return scoreMax
+  return Math.max(...scores)
 }

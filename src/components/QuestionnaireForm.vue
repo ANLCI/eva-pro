@@ -116,28 +116,14 @@ const enregistreEvenementAffichageQuestion = async (question) => {
 }
 
 const enregistreEvenementReponse = async () => {
-  // Protection : vérifier que la question existe dans les données locales
   if (!currentQuestion.value) {
     console.warn('Question actuelle non définie')
     return Promise.resolve()
   }
 
-  const questionDetails = detailPourQuestion(
-    situation.value?.nom_technique_sans_variant,
-    currentQuestion.value.nom_technique,
-  )
-
-  // Si la question n'existe pas dans les données locales, on enregistre quand même l'événement
-  // mais avec un avertissement
-  if (!questionDetails) {
-    console.warn(
-      `Question ${currentQuestion.value.nom_technique} non trouvée dans les données locales pour la situation ${situation.value?.nom_technique_sans_variant}`,
-    )
-  }
-
   const evenementParams = getEvenementResponseParams(
     situation.value,
-    currentQuestion.value.nom_technique,
+    currentQuestion.value,
     selectedAnswer.value,
   )
   return mutation.mutateAsync(evenementParams)
