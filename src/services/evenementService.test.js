@@ -26,7 +26,6 @@ describe('#getEvenementResponseParams', () => {
     expect(params.donnees).toEqual({
       question: 'Q1IC02',
       reponse: 'Q1IC02R03',
-      scoreMax: 2,
       nom_technique: 'Q1IC02R03',
       intitule: 'Moins de 30 ans',
       score: 1,
@@ -57,6 +56,6 @@ describe('#getEvenementResponseParams', () => {
 
     const params = getEvenementResponseParams(situation, question, 'Métallurgie')
 
-    expect(params.donnees).toEqual({ question: 'Q1IC04', reponse: 'Métallurgie', scoreMax: 0 })
+    expect(params.donnees).toEqual({ question: 'Q1IC04', reponse: 'Métallurgie' })
   })
 })

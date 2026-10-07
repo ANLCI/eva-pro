@@ -1,6 +1,6 @@
 import { useEvaluationStore } from './../stores/evaluationStore'
 import { useEvenementStore } from './../stores/evenementStore'
-import { choixPourQuestion, scoreMaxPourQuestion, scoresDuChoix } from './questionService'
+import { choixPourQuestion, scoresDuChoix } from './questionService'
 
 const EVALUATION_NAMES = {
   DEMARRAGE: 'demarrage',
@@ -79,7 +79,6 @@ export function getEvenementResponseParams(situation, question, reponseId) {
   const donnees = {
     question: question.nom_technique,
     reponse: reponseId,
-    scoreMax: scoreMaxPourQuestion(question),
   }
 
   // Les réponses en saisie libre n'ont pas de choix correspondant
