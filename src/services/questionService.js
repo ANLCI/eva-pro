@@ -9,13 +9,12 @@ const CHAMPS_SCORE = {
   strategies: 'score_strategies',
 }
 
-export function thematiquePourQuestion(nomTechniqueSansVariantDeSituation, question) {
-  const thematiquesPourSituation = thematiques[nomTechniqueSansVariantDeSituation]
+export function thematiquePourQuestion(nomTechniqueSituation, nomTechniqueQuestion) {
+  const thematiquesPourSituation = thematiques[nomTechniqueSituation]
   if (!thematiquesPourSituation) return undefined
 
-  const question_sans_variant = question.split('__')[0]
   return Object.keys(thematiquesPourSituation).find((thematique) =>
-    thematiquesPourSituation[thematique].includes(question_sans_variant),
+    thematiquesPourSituation[thematique].includes(nomTechniqueQuestion),
   )
 }
 

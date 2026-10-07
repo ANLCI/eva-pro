@@ -74,12 +74,6 @@ describe('#thematiquePourQuestion', () => {
     expect(thematiquePourQuestion(situation, 'Q1PC02')).toBe('Profil des collaborateurs')
   })
 
-  it('doit retourner la thématique pour une question avec un variant', () => {
-    expect(thematiquePourQuestion(situation, 'Q1IC01__variant')).toBe(
-      "Identité & culture d'organisation",
-    )
-  })
-
   it('doit retourner undefined pour une question invalide', () => {
     expect(thematiquePourQuestion(situation, 'QuestionInvalide')).toBeUndefined()
   })

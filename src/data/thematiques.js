@@ -1,5 +1,5 @@
 // Thématiques de chaque situation, dans l'ordre du menu latéral,
-// avec les noms techniques (sans variant) des questions qui s'y rattachent
+// avec les noms techniques des questions qui s'y rattachent
 export const thematiques = {
   diag_risques_entreprise: {
     "Identité & culture d'organisation": ['Q1IC01', 'Q1IC02', 'Q1IC03', 'Q1IC04', 'Q1IC05'],

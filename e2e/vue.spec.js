@@ -62,7 +62,7 @@ test('passe automatiquement la question radio puis affiche le bouton en revenant
 });
 
 test('reprend le deuxième questionnaire', async ({ page }) => {
-  const sousMenuThematiqueActif = '.fr-sidemenu__item.fr-sidemenu__item--active button[aria-controls=evaluation_impact_general__constructys]'
+  const sousMenuThematiqueActif = '.fr-sidemenu__item.fr-sidemenu__item--active button[aria-controls=evaluation_impact_general]'
   const evaluationId = "evaluation-123456"
   const campagneId = "campagne-123456"
   await mockEvaluationResumptionRoutes(page, { evaluationId, campagneId });

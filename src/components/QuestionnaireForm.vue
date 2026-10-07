@@ -160,13 +160,13 @@ watch(currentQuestion, (newQuestion) => {
 
   // Protection : vérifier que la question est rattachée à une thématique
   const thematique = thematiquePourQuestion(
-    situation.value?.nom_technique_sans_variant,
+    situation.value?.nom_technique,
     newQuestion.nom_technique,
   )
 
   if (!thematique) {
     console.warn(
-      `Question ${newQuestion.nom_technique} rattachée à aucune thématique de la situation ${situation.value?.nom_technique_sans_variant}. La question sera ignorée.`,
+      `Question ${newQuestion.nom_technique} rattachée à aucune thématique de la situation ${situation.value?.nom_technique}. La question sera ignorée.`,
     )
     // On émet quand même l'événement pour mettre à jour l'UI, mais on n'enregistre pas l'événement d'affichage
     emit('updateCurrentQuestion', newQuestion)
