@@ -60,6 +60,15 @@ export async function mockAdminBaseRoute(page, adminUrl) {
   })
 }
 
+export async function attendsEvenementReponse(page, question) {
+  const requete = await page.waitForRequest((request) => {
+    if (!request.url().endsWith('/api/evenements') || request.method() !== 'POST') return false
+    const evenement = request.postDataJSON()
+    return evenement.nom === 'reponse' && evenement.donnees?.question === question
+  })
+  return requete.postDataJSON().donnees
+}
+
 export function getQuestionnaireSelectors(page) {
   return {
     legend: page.locator('legend'),

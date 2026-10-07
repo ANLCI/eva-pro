@@ -20,6 +20,7 @@ export const mockApiQuestionnaire1 = [
         "nom_technique": "Q1IC01R01",
         "intitule": "250 salariés et +",
         "type_choix": "bon",
+        "score": { "risques": 0 },
         "position": 1,
         "audio_url": null
       },
@@ -28,6 +29,7 @@ export const mockApiQuestionnaire1 = [
         "nom_technique": "Q1IC01R02",
         "intitule": "50 à 249 salariés",
         "type_choix": "bon",
+        "score": { "risques": 2 },
         "position": 2,
         "audio_url": null
       },

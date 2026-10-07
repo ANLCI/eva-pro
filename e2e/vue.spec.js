@@ -2,6 +2,7 @@ import { test, expect } from '@playwright/test';
 
 import { mockApiCampagne } from './fixtures/campagne';
 import {
+  attendsEvenementReponse,
   goToCampagne,
   getQuestionnaireSelectors,
   mockAdminBaseRoute,
@@ -74,6 +75,42 @@ test('reprend le deuxième questionnaire', async ({ page }) => {
   const choicesList1 = page.locator('label');
   await expect(choicesList1.first()).toContainText('Oui');
   await choicesList1.first().click();
+});
+
+test('enregistre les scores des choix reçus avec la campagne', async ({ page }) => {
+  const evaluationId = 3;
+  await mockCampagneRoutes(page, { evaluationId });
+  await goToCampagne(page, { beneficiaireId });
+
+  const selectors = getQuestionnaireSelectors(page);
+
+  const reponseQ1IC01 = attendsEvenementReponse(page, 'Q1IC01');
+  await selectors.labels.nth(1).click();
+  expect(await reponseQ1IC01).toEqual({
+    question: 'Q1IC01',
+    reponse: 'Q1IC01R02',
+    scoreMax: 2,
+    nom_technique: 'Q1IC01R02',
+    intitule: '50 à 249 salariés',
+    score: 2,
+  });
+
+  const reponseQ1PC01 = attendsEvenementReponse(page, 'Q1PC01');
+  await selectors.champTexte.fill('Finance');
+  await page.locator('button:has-text("Valider")').click();
+  expect(await reponseQ1PC01).toEqual({ question: 'Q1PC01', reponse: 'Finance', scoreMax: 0 });
+
+  await expect(selectors.legend).toContainText("Avez-vous parfois l'impression");
+  const reponseQ2PC01 = attendsEvenementReponse(page, 'Q2PC01');
+  await selectors.labels.first().click();
+  expect(await reponseQ2PC01).toEqual(
+    expect.objectContaining({
+      reponse: 'Q2PC01R1',
+      score_cout: 3,
+      score_strategies: 0,
+      score_numerique: 0,
+    }),
+  );
 });
 
 test("l'accueil redirige vers l'admin si le code campagne est manquant", async ({ page }) => {

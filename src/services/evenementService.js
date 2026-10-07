@@ -1,6 +1,6 @@
 import { useEvaluationStore } from './../stores/evaluationStore'
 import { useEvenementStore } from './../stores/evenementStore'
-import { reponsePourQuestion, scoreMaxPourQuestion } from './questionService'
+import { choixPourQuestion, scoreMaxPourQuestion, scoresDuChoix } from './questionService'
 
 const EVALUATION_NAMES = {
   DEMARRAGE: 'demarrage',
@@ -72,25 +72,23 @@ export function getEvenementAffichageQuestionParams(question, situation) {
   }
 }
 
-export function getEvenementResponseParams(situation, questionNomTechnique, reponseId) {
+export function getEvenementResponseParams(situation, question, reponseId) {
   const baseParams = getEvenementParamsBase(EVALUATION_NAMES.REPONSE, situation.nom_technique)
-  const scoreMax = scoreMaxPourQuestion(situation.nom_technique_sans_variant, questionNomTechnique)
-  const reponseDetails = reponsePourQuestion(
-    situation.nom_technique_sans_variant,
-    questionNomTechnique,
-    reponseId,
-  )
+  const choix = choixPourQuestion(question, reponseId)
 
-  // Protection : si reponseDetails est null (question ou réponse n'existe pas dans les données locales),
-  // on ne fait pas le spread pour éviter les erreurs
   const donnees = {
-    question: questionNomTechnique,
+    question: question.nom_technique,
     reponse: reponseId,
-    scoreMax: scoreMax,
+    scoreMax: scoreMaxPourQuestion(question),
   }
 
-  if (reponseDetails) {
-    Object.assign(donnees, reponseDetails)
+  // Les réponses en saisie libre n'ont pas de choix correspondant
+  if (choix) {
+    Object.assign(
+      donnees,
+      { nom_technique: choix.nom_technique, intitule: choix.intitule },
+      scoresDuChoix(choix),
+    )
   }
 
   return {

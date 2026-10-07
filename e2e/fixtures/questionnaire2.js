@@ -20,6 +20,7 @@ export const mockApiQuestionnaire2 = [
         "nom_technique": "Q2PC01R1",
         "intitule": "Oui",
         "type_choix": "bon",
+        "score": { "cout": 3, "strategies": 0, "numerique": 0 },
         "position": 1,
         "audio_url": null
       },
@@ -28,6 +29,7 @@ export const mockApiQuestionnaire2 = [
         "nom_technique": "Q2PC01R2",
         "intitule": "Non",
         "type_choix": "bon",
+        "score": { "cout": 0, "strategies": 0, "numerique": 0 },
         "position": 2,
         "audio_url": null
       }
@@ -54,6 +56,7 @@ export const mockApiQuestionnaire2 = [
         "nom_technique": "Q2PC02R1",
         "intitule": "Oui",
         "type_choix": "bon",
+        "score": { "cout": 4, "strategies": 3, "numerique": 0 },
         "position": 1,
         "audio_url": null
       },
@@ -62,6 +65,7 @@ export const mockApiQuestionnaire2 = [
         "nom_technique": "Q2PC02R2",
         "intitule": "Non",
         "type_choix": "bon",
+        "score": { "cout": 0, "strategies": 0, "numerique": 0 },
         "position": 2,
         "audio_url": null
       }
