@@ -1,10 +1,4 @@
-import * as diagnosticRisques from './../data/situations/diagnostic_risques'
-import * as evaluationImpact from './../data/situations/evaluation_impact'
-
-const questions = {
-  diag_risques_entreprise: diagnosticRisques,
-  evaluation_impact_general: evaluationImpact,
-}
+import { thematiques } from './../data/thematiques'
 
 // Correspondance entre les clés du score d'un choix (campagne) et les champs
 // attendus par le serveur dans les données de l'évènement de réponse
@@ -15,15 +9,14 @@ const CHAMPS_SCORE = {
   strategies: 'score_strategies',
 }
 
-export function detailPourQuestion(nomTechniqueSansVariantDeSituation, question) {
-  const questionsPourSituation = questions[nomTechniqueSansVariantDeSituation]
-  if (!questionsPourSituation) return undefined
+export function thematiquePourQuestion(nomTechniqueSansVariantDeSituation, question) {
+  const thematiquesPourSituation = thematiques[nomTechniqueSansVariantDeSituation]
+  if (!thematiquesPourSituation) return undefined
 
   const question_sans_variant = question.split('__')[0]
-  const questionDetails = questionsPourSituation[question_sans_variant]
-  if (!questionDetails) return undefined
-
-  return questionDetails
+  return Object.keys(thematiquesPourSituation).find((thematique) =>
+    thematiquesPourSituation[thematique].includes(question_sans_variant),
+  )
 }
 
 export function choixPourQuestion(question, reponse) {

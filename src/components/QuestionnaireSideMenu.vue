@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted, watch } from 'vue'
 import { recupereSituations } from './../services/campagneService'
-import { detailPourQuestion } from './../services/questionService'
+import { thematiquePourQuestion } from './../services/questionService'
 import { thematiques } from './../data/thematiques.js'
 import { useRoute } from 'vue-router'
 
@@ -27,10 +27,10 @@ const construitMenu = () => {
 
   menuItems.value = situations.map((situation) => {
     const active = situationCourante.nom_technique === situation.nom_technique
-    const thematiqueItems = thematiques[situation.nom_technique_sans_variant]
+    const thematiquesPourSituation = thematiques[situation.nom_technique_sans_variant]
     let thematiqueActive = active
-    const menuItemsForSituation = thematiqueItems
-      ? thematiqueItems.map((item) => {
+    const menuItemsForSituation = thematiquesPourSituation
+      ? Object.keys(thematiquesPourSituation).map((item) => {
           const menu = {
             id: item.toLowerCase().replace(/\s+/g, '-'),
             to: '',
@@ -79,11 +79,10 @@ watch(
   () => props.currentQuestion?.nom_technique,
   (nomTechnique) => {
     if (nomTechnique && situationCourante) {
-      const questionData = detailPourQuestion(
+      const thematiqueText = thematiquePourQuestion(
         situationCourante.nom_technique_sans_variant,
         nomTechnique,
       )
-      const thematiqueText = questionData.thematique
       const situationItem = menuItems.value.find((item) => item.active === true)
 
       if (situationItem) {

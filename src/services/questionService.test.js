@@ -3,7 +3,7 @@ import {
   choixPourQuestion,
   scoresDuChoix,
   scoreMaxPourQuestion,
-  detailPourQuestion,
+  thematiquePourQuestion,
 } from './questionService'
 
 const situation = 'diag_risques_entreprise'
@@ -69,32 +69,22 @@ describe('#scoreMaxPourQuestion', () => {
   })
 })
 
-describe('#detailPourQuestion', () => {
-  it('doit retourner les détails pour une question valide', () => {
-    const questionDetails = detailPourQuestion(situation, 'Q1IC01')
-    expect(questionDetails).toEqual(
-      expect.objectContaining({
-        nom_technique: 'Q1IC01',
-      }),
-    )
+describe('#thematiquePourQuestion', () => {
+  it('doit retourner la thématique de la question', () => {
+    expect(thematiquePourQuestion(situation, 'Q1PC02')).toBe('Profil des collaborateurs')
   })
 
-  it('doit retourner les détails pour une question valide avec un variant', () => {
-    const questionDetails = detailPourQuestion(situation, 'Q1IC01__variant')
-    expect(questionDetails).toEqual(
-      expect.objectContaining({
-        nom_technique: 'Q1IC01',
-      }),
+  it('doit retourner la thématique pour une question avec un variant', () => {
+    expect(thematiquePourQuestion(situation, 'Q1IC01__variant')).toBe(
+      "Identité & culture d'organisation",
     )
   })
 
   it('doit retourner undefined pour une question invalide', () => {
-    const questionDetails = detailPourQuestion(situation, 'QuestionInvalide')
-    expect(questionDetails).toBeUndefined()
+    expect(thematiquePourQuestion(situation, 'QuestionInvalide')).toBeUndefined()
   })
 
   it('doit retourner undefined pour une situation invalide', () => {
-    const questionDetails = detailPourQuestion('situationInvalide', 'Q1IC01')
-    expect(questionDetails).toBeUndefined()
+    expect(thematiquePourQuestion('situationInvalide', 'Q1IC01')).toBeUndefined()
   })
 })
