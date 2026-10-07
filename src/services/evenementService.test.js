@@ -4,7 +4,6 @@ import { getEvenementResponseParams } from './evenementService'
 
 const situation = {
   nom_technique: 'diag_risques_entreprise',
-  nom_technique_sans_variant: 'diag_risques_entreprise',
 }
 
 describe('#getEvenementResponseParams', () => {

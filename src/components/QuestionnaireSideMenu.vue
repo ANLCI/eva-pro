@@ -27,7 +27,7 @@ const construitMenu = () => {
 
   menuItems.value = situations.map((situation) => {
     const active = situationCourante.nom_technique === situation.nom_technique
-    const thematiquesPourSituation = thematiques[situation.nom_technique_sans_variant]
+    const thematiquesPourSituation = thematiques[situation.nom_technique]
     let thematiqueActive = active
     const menuItemsForSituation = thematiquesPourSituation
       ? Object.keys(thematiquesPourSituation).map((item) => {
@@ -79,10 +79,7 @@ watch(
   () => props.currentQuestion?.nom_technique,
   (nomTechnique) => {
     if (nomTechnique && situationCourante) {
-      const thematiqueText = thematiquePourQuestion(
-        situationCourante.nom_technique_sans_variant,
-        nomTechnique,
-      )
+      const thematiqueText = thematiquePourQuestion(situationCourante.nom_technique, nomTechnique)
       const situationItem = menuItems.value.find((item) => item.active === true)
 
       if (situationItem) {
