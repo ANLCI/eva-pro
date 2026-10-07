@@ -13,7 +13,7 @@ import {
 
 import ProgressBar from './../components/ProgressBar.vue'
 import { determineQuestionInputType } from '../utils/questionInputType'
-import { detailPourQuestion } from '../services/questionService'
+import { thematiquePourQuestion } from '../services/questionService'
 
 import { useEvaluationStore } from './../stores/evaluationStore'
 import { useAlertStore } from '../stores/alertStore'
@@ -158,15 +158,15 @@ watch(currentQuestion, (newQuestion) => {
     return
   }
 
-  // Protection : vérifier que la question existe dans les données locales
-  const questionDetails = detailPourQuestion(
+  // Protection : vérifier que la question est rattachée à une thématique
+  const thematique = thematiquePourQuestion(
     situation.value?.nom_technique_sans_variant,
     newQuestion.nom_technique,
   )
 
-  if (!questionDetails) {
+  if (!thematique) {
     console.warn(
-      `Question ${newQuestion.nom_technique} non trouvée dans les données locales pour la situation ${situation.value?.nom_technique_sans_variant}. La question sera ignorée.`,
+      `Question ${newQuestion.nom_technique} rattachée à aucune thématique de la situation ${situation.value?.nom_technique_sans_variant}. La question sera ignorée.`,
     )
     // On émet quand même l'événement pour mettre à jour l'UI, mais on n'enregistre pas l'événement d'affichage
     emit('updateCurrentQuestion', newQuestion)
