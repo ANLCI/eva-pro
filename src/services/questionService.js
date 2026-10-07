@@ -32,12 +32,3 @@ export function scoresDuChoix(choix) {
     ]),
   )
 }
-
-export function scoreMaxPourQuestion(question) {
-  const scores = (question?.choix ?? [])
-    .map((choix) => scoresDuChoix(choix).score)
-    .filter((score) => typeof score === 'number')
-  if (!scores.length) return 0
-
-  return Math.max(...scores)
-}

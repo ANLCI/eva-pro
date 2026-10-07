@@ -1,10 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import {
-  choixPourQuestion,
-  scoresDuChoix,
-  scoreMaxPourQuestion,
-  thematiquePourQuestion,
-} from './questionService'
+import { choixPourQuestion, scoresDuChoix, thematiquePourQuestion } from './questionService'
 
 const situation = 'diag_risques_entreprise'
 
@@ -51,21 +46,6 @@ describe('#scoresDuChoix', () => {
   it('doit retourner un objet vide pour un choix sans score', () => {
     expect(scoresDuChoix({ score: null })).toEqual({})
     expect(scoresDuChoix(undefined)).toEqual({})
-  })
-})
-
-describe('#scoreMaxPourQuestion', () => {
-  it('doit retourner le score maximum correct pour une question', () => {
-    expect(scoreMaxPourQuestion(questionDiagnostic)).toBe(2)
-  })
-
-  it('doit retourner 0 pour une question sans choix', () => {
-    expect(scoreMaxPourQuestion(questionSaisie)).toBe(0)
-  })
-
-  it('doit retourner 0 pour une question sans score de risque', () => {
-    const question = { choix: [{ score: { cout: 3 } }, { score: { cout: 0 } }] }
-    expect(scoreMaxPourQuestion(question)).toBe(0)
   })
 })
 

@@ -89,7 +89,6 @@ test('enregistre les scores des choix reçus avec la campagne', async ({ page })
   expect(await reponseQ1IC01).toEqual({
     question: 'Q1IC01',
     reponse: 'Q1IC01R02',
-    scoreMax: 2,
     nom_technique: 'Q1IC01R02',
     intitule: '50 à 249 salariés',
     score: 2,
@@ -98,7 +97,7 @@ test('enregistre les scores des choix reçus avec la campagne', async ({ page })
   const reponseQ1PC01 = attendsEvenementReponse(page, 'Q1PC01');
   await selectors.champTexte.fill('Finance');
   await page.locator('button:has-text("Valider")').click();
-  expect(await reponseQ1PC01).toEqual({ question: 'Q1PC01', reponse: 'Finance', scoreMax: 0 });
+  expect(await reponseQ1PC01).toEqual({ question: 'Q1PC01', reponse: 'Finance' });
 
   await expect(selectors.legend).toContainText("Avez-vous parfois l'impression");
   const reponseQ2PC01 = attendsEvenementReponse(page, 'Q2PC01');
