@@ -22,7 +22,7 @@
     "@tanstack/vue-query": "^5.92.0",
     "express": "4.x",
     "pinia": "^4.0.3",
-    "rollbar": "^2.26.4",
+    "rollbar": "^3.1.0",
     "uuid": "^14.0.2",
     "vue": "^3.5.18",
     "vue-router": "^5.0.3"
