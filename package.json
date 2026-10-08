@@ -21,7 +21,7 @@
     "@gouvfr/dsfr": "~1.14.4",
     "@tanstack/vue-query": "^5.92.0",
     "express": "4.x",
-    "pinia": "^3.0.3",
+    "pinia": "^4.0.3",
     "rollbar": "^2.26.4",
     "uuid": "^13.0.0",
     "vue": "^3.5.18",
