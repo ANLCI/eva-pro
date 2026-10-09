@@ -39,7 +39,7 @@
     "eslint-plugin-playwright": "^2.2.0",
     "eslint-plugin-vue": "~10.11.1",
     "globals": "^16.5.0",
-    "jsdom": "^26.1.0",
+    "jsdom": "^30.1.2",
     "prettier": "3.9.9",
     "vite": "npm:rolldown-vite@latest",
     "vite-plugin-vue-devtools": "^8.0.0",
