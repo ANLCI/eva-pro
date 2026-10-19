@@ -6,7 +6,7 @@ executors:
       - image: cimg/node:22.22
   pw-noble-development:
     docker:
-      - image: mcr.microsoft.com/playwright:v1.55.0-noble
+      - image: mcr.microsoft.com/playwright:v1.64.1-noble
     working_directory: /home/circleci/project
     environment:
       VITE_API_BASE_URL: https://mon.api.fr/api
