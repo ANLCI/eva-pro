@@ -7,6 +7,7 @@ executors:
   pw-noble-development:
     docker:
       - image: mcr.microsoft.com/playwright:v1.55.0-noble
+    working_directory: /home/circleci/project
     environment:
       VITE_API_BASE_URL: https://mon.api.fr/api
       VITE_ADMIN_BASE_URL: https://prepro.eva.anlci.gouv.fr/admin
@@ -53,9 +54,8 @@ jobs:
     steps:
       - checkout
       - restore_node_modules_cache
-      - run: npm install -D @playwright/test && npx playwright install --with-deps
       - run: npm run build
-      - run: xvfb-run npx playwright test
+      - run: npm run test:e2e
       - store_artifacts:
           path: ./playwright-report
           destination: playwright-report-first
