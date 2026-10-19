@@ -67,7 +67,6 @@ const mutation = useMutation({
 const currentQuestionIndex = ref(0)
 const answers = ref({})
 const isLoading = ref(false)
-const isFinishingSituation = ref(false) // Garde-fou pour éviter les appels multiples à finSituation
 const sensTransition = ref('suivant')
 
 const currentQuestion = computed(() => {
@@ -153,35 +152,22 @@ const labelBoutonSuivant = computed(() => {
   }
 })
 
-let lastLoggedQuestionNomTechnique = null // Garde-fou pour éviter les logs multiples pour la même question
 const enregistreAffichageQuestion = (newQuestion) => {
-  // Protection : ne pas traiter si c'est la même question ou si on est en train de finir la situation
-  if (!newQuestion || isFinishingSituation.value) {
+  if (!newQuestion) {
     return
   }
 
-  // Protection : vérifier que la question est rattachée à une thématique
-  const thematique = thematiquePourQuestion(
-    situation.value?.nom_technique,
-    newQuestion.nom_technique,
-  )
+  emit('updateCurrentQuestion', newQuestion)
+
+  const thematique = thematiquePourQuestion(situation.value?.nom_technique, newQuestion.nom_technique)
 
   if (!thematique) {
     console.warn(
       `Question ${newQuestion.nom_technique} rattachée à aucune thématique de la situation ${situation.value?.nom_technique}. La question sera ignorée.`,
     )
-    // On émet quand même l'événement pour mettre à jour l'UI, mais on n'enregistre pas l'événement d'affichage
-    emit('updateCurrentQuestion', newQuestion)
     return
   }
 
-  // Protection : éviter les appels multiples pour la même question
-  if (newQuestion.nom_technique === lastLoggedQuestionNomTechnique) {
-    return
-  }
-
-  lastLoggedQuestionNomTechnique = newQuestion.nom_technique
-  emit('updateCurrentQuestion', newQuestion)
   enregistreEvenementAffichageQuestion(newQuestion)
 }
 
@@ -202,10 +188,6 @@ watch(
     }
 
     if (newSituation) {
-      // Réinitialiser les flags quand on change de situation
-      isFinishingSituation.value = false
-      lastLoggedQuestionNomTechnique = null
-
       const questionsCount = newSituation.questions?.length ?? 0
       if (initialIndex === -1 && questionsCount > 0) {
         currentQuestionIndex.value = questionsCount - 1
