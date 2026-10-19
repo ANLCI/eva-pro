@@ -3,6 +3,7 @@ import { test, expect } from '@playwright/test';
 import { mockApiCampagne } from './fixtures/campagne';
 import {
   attendsEvenementAffichageQuestion,
+  attendsEvenementDemarrage,
   attendsEvenementReponse,
   goToCampagne,
   getQuestionnaireSelectors,
@@ -100,6 +101,21 @@ test("enregistre l'affichage de la première question", async ({ page }) => {
   const affichageQ1IC01 = attendsEvenementAffichageQuestion(page, 'Q1IC01');
   await goToCampagne(page, { beneficiaireId });
   expect(await affichageQ1IC01).toEqual({ question: 'Q1IC01' });
+});
+
+test('enregistre le démarrage du deuxième questionnaire', async ({ page }) => {
+  const evaluationId = 5;
+  await mockCampagneRoutes(page, { evaluationId });
+  await goToCampagne(page, { beneficiaireId });
+
+  const selectors = getQuestionnaireSelectors(page);
+
+  await selectors.labels.first().click();
+  await selectors.champTexte.fill('Finance');
+
+  const demarrage = attendsEvenementDemarrage(page, 'evaluation_impact_general');
+  await page.locator('button:has-text("Valider")').click();
+  expect(await demarrage).toEqual(expect.objectContaining({ position: 0 }));
 });
 
 test('enregistre les scores des choix reçus avec la campagne', async ({ page }) => {

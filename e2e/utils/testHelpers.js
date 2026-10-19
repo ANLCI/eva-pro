@@ -60,21 +60,35 @@ export async function mockAdminBaseRoute(page, adminUrl) {
   })
 }
 
-async function attendsEvenement(page, nom, question) {
+async function attendsEvenement(page, correspond) {
   const requete = await page.waitForRequest((request) => {
     if (!request.url().endsWith('/api/evenements') || request.method() !== 'POST') return false
-    const evenement = request.postDataJSON()
-    return evenement.nom === nom && evenement.donnees?.question === question
+    return correspond(request.postDataJSON())
   })
-  return requete.postDataJSON().donnees
+  return requete.postDataJSON()
+}
+
+async function attendsEvenementQuestion(page, nom, question) {
+  const evenement = await attendsEvenement(
+    page,
+    (evenement) => evenement.nom === nom && evenement.donnees?.question === question,
+  )
+  return evenement.donnees
 }
 
 export async function attendsEvenementReponse(page, question) {
-  return attendsEvenement(page, 'reponse', question)
+  return attendsEvenementQuestion(page, 'reponse', question)
 }
 
 export async function attendsEvenementAffichageQuestion(page, question) {
-  return attendsEvenement(page, 'affichageQuestionQCM', question)
+  return attendsEvenementQuestion(page, 'affichageQuestionQCM', question)
+}
+
+export async function attendsEvenementDemarrage(page, situation) {
+  return attendsEvenement(
+    page,
+    (evenement) => evenement.nom === 'demarrage' && evenement.situation === situation,
+  )
 }
 
 export function getQuestionnaireSelectors(page) {

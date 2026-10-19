@@ -81,6 +81,7 @@ const prevSituation = () => {
       :opco-financeur="campagneStore.getOpcoFinanceur()"
     />
     <QuestionnaireForm
+      :key="situation.id"
       class="form"
       :situation="situation"
       :initial-question-index="initialQuestionIndex"
