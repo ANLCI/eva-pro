@@ -13,7 +13,6 @@ import {
 
 import ProgressBar from './../components/ProgressBar.vue'
 import { determineQuestionInputType } from '../utils/questionInputType'
-import { thematiquePourQuestion } from '../services/questionService'
 
 import { useEvaluationStore } from './../stores/evaluationStore'
 import { useAlertStore } from '../stores/alertStore'
@@ -170,16 +169,6 @@ const enregistreAffichageQuestion = (newQuestion) => {
   }
 
   emit('updateCurrentQuestion', newQuestion)
-
-  const thematique = thematiquePourQuestion(situation.value?.nom_technique, newQuestion.nom_technique)
-
-  if (!thematique) {
-    console.warn(
-      `Question ${newQuestion.nom_technique} rattachée à aucune thématique de la situation ${situation.value?.nom_technique}. La question sera ignorée.`,
-    )
-    return
-  }
-
   enregistreEvenementAffichageQuestion(newQuestion)
 }
 

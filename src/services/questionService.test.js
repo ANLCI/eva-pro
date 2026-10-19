@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, vi } from 'vitest'
 import { choixPourQuestion, scoresDuChoix, thematiquePourQuestion } from './questionService'
 
 const situation = 'diag_risques_entreprise'
@@ -56,6 +56,17 @@ describe('#thematiquePourQuestion', () => {
 
   it('doit retourner undefined pour une question invalide', () => {
     expect(thematiquePourQuestion(situation, 'QuestionInvalide')).toBeUndefined()
+  })
+
+  it('doit signaler une question rattachée à aucune thématique', () => {
+    const warn = vi.spyOn(console, 'warn').mockImplementation(() => {})
+
+    thematiquePourQuestion(situation, 'QuestionInvalide')
+
+    expect(warn).toHaveBeenCalledWith(
+      'Question QuestionInvalide rattachée à aucune thématique de la situation diag_risques_entreprise',
+    )
+    warn.mockRestore()
   })
 
   it('doit retourner undefined pour une situation invalide', () => {

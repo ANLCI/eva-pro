@@ -10,12 +10,17 @@ const CHAMPS_SCORE = {
 }
 
 export function thematiquePourQuestion(nomTechniqueSituation, nomTechniqueQuestion) {
-  const thematiquesPourSituation = thematiques[nomTechniqueSituation]
-  if (!thematiquesPourSituation) return undefined
-
-  return Object.keys(thematiquesPourSituation).find((thematique) =>
+  const thematiquesPourSituation = thematiques[nomTechniqueSituation] ?? {}
+  const thematique = Object.keys(thematiquesPourSituation).find((thematique) =>
     thematiquesPourSituation[thematique].includes(nomTechniqueQuestion),
   )
+
+  if (!thematique) {
+    console.warn(
+      `Question ${nomTechniqueQuestion} rattachée à aucune thématique de la situation ${nomTechniqueSituation}`,
+    )
+  }
+  return thematique
 }
 
 export function choixPourQuestion(question, reponse) {
