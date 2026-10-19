@@ -64,7 +64,19 @@ const mutation = useMutation({
   },
 })
 
-const currentQuestionIndex = ref(0)
+const indexQuestionInitiale = () => {
+  const questionsCount = questions.value?.length ?? 0
+  const initialIndex = initialQuestionIndexProp.value
+  if (initialIndex === -1 && questionsCount > 0) {
+    return questionsCount - 1
+  } else if (initialIndex >= 0 && initialIndex < questionsCount) {
+    return initialIndex
+  } else {
+    return 0
+  }
+}
+
+const currentQuestionIndex = ref(indexQuestionInitiale())
 const answers = ref({})
 const isLoading = ref(false)
 const sensTransition = ref('suivant')
@@ -172,35 +184,6 @@ const enregistreAffichageQuestion = (newQuestion) => {
 }
 
 watch(currentQuestion, enregistreAffichageQuestion)
-
-// Réinitialise l'état quand la situation ou l'index initial change
-watch(
-  [situation, initialQuestionIndexProp],
-  ([newSituation, initialIndex], [oldSituation, oldInitialIndex]) => {
-    // Protection : ne pas réinitialiser si c'est la même situation et le même index
-    if (
-      newSituation &&
-      oldSituation &&
-      newSituation.id === oldSituation.id &&
-      initialIndex === oldInitialIndex
-    ) {
-      return
-    }
-
-    if (newSituation) {
-      const questionsCount = newSituation.questions?.length ?? 0
-      if (initialIndex === -1 && questionsCount > 0) {
-        currentQuestionIndex.value = questionsCount - 1
-      } else if (initialIndex >= 0 && initialIndex < questionsCount) {
-        currentQuestionIndex.value = initialIndex
-      } else {
-        currentQuestionIndex.value = 0
-      }
-      answers.value = {}
-    }
-  },
-  { immediate: true },
-)
 
 onMounted(async () => {
   if (currentQuestionIndex.value === 0 && situation.value) {
