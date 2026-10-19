@@ -90,8 +90,6 @@ watch(
         const thematiqueItem = situationItem.menuItems.find((item) => item.text === thematiqueText)
         if (thematiqueItem) {
           thematiqueItem.active = true
-        } else {
-          console.warn('Thématique non trouvée pour le texte :', thematiqueText)
         }
       }
     }
