@@ -68,6 +68,7 @@ const currentQuestionIndex = ref(0)
 const answers = ref({})
 const isLoading = ref(false)
 const isFinishingSituation = ref(false) // Garde-fou pour éviter les appels multiples à finSituation
+const sensTransition = ref('suivant')
 
 const currentQuestion = computed(() => {
   return questions.value ? questions.value[currentQuestionIndex.value] : null
@@ -90,6 +91,7 @@ const afficheBoutonSuivant = computed(() => {
 
 const nextQuestion = async () => {
   isLoading.value = true
+  sensTransition.value = 'suivant'
 
   try {
     await enregistreEvenementReponse()
@@ -135,6 +137,7 @@ const enregistreEvenementFinSituation = async () => {
 }
 
 const prevQuestion = () => {
+  sensTransition.value = 'precedent'
   if (currentQuestionIndex.value > 0) {
     currentQuestionIndex.value--
   } else {
@@ -230,7 +233,7 @@ onMounted(() => {
         <ProgressBar :current-value="currentQuestionIndex + 1" :max-value="questions.length" />
       </div>
 
-      <Transition name="question-slide" mode="out-in">
+      <Transition :name="`question-slide-${sensTransition}`" mode="out-in">
         <div v-if="currentQuestion" :key="currentQuestion.nom_technique" class="questionnaire">
           <DsfrButton
             :disabled="currentQuestionIndex === 0"
@@ -297,19 +300,23 @@ onMounted(() => {
   margin-left: -1rem;
 }
 
-.question-slide-enter-active,
-.question-slide-leave-active {
+.question-slide-suivant-enter-active,
+.question-slide-suivant-leave-active,
+.question-slide-precedent-enter-active,
+.question-slide-precedent-leave-active {
   transition:
     opacity 250ms ease,
     transform 250ms ease;
 }
 
-.question-slide-enter-from {
+.question-slide-suivant-enter-from,
+.question-slide-precedent-leave-to {
   opacity: 0;
   transform: translateX(40px);
 }
 
-.question-slide-leave-to {
+.question-slide-suivant-leave-to,
+.question-slide-precedent-enter-from {
   opacity: 0;
   transform: translateX(-40px);
 }

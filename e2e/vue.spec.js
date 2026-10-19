@@ -61,6 +61,21 @@ test('passe automatiquement la question radio puis affiche le bouton en revenant
   await expect(selectors.boutonContinuer).toBeVisible();
 });
 
+test('anime la question vers la droite en revenant en arrière', async ({ page }) => {
+  const evaluationId = 2;
+  await mockCampagneRoutes(page, { evaluationId });
+  await goToCampagne(page, { beneficiaireId });
+
+  const selectors = getQuestionnaireSelectors(page);
+
+  await selectors.labels.first().click();
+  await expect(page.locator('.question-slide-suivant-leave-active')).toBeAttached();
+  await expect(selectors.boutonPrecedent).toBeEnabled();
+
+  await selectors.boutonPrecedent.click();
+  await expect(page.locator('.question-slide-precedent-leave-active')).toBeAttached();
+});
+
 test('reprend le deuxième questionnaire', async ({ page }) => {
   const sousMenuThematiqueActif = '.fr-sidemenu__item.fr-sidemenu__item--active button[aria-controls=evaluation_impact_general]'
   const evaluationId = "evaluation-123456"
