@@ -11,6 +11,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "test:unit": "vitest",
+    "//": "pretest:e2e : sous Linux, --with-deps lance sudo apt-get à chaque npm run test:e2e ; lancer plutôt npx playwright test",
+    "pretest:e2e": "playwright install --with-deps",
     "test:e2e": "playwright test",
     "lint": "eslint . --fix",
     "format": "prettier --write src/",

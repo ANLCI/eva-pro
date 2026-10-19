@@ -37,9 +37,6 @@ npm run test:unit
 ### Run End-to-End Tests with [Playwright](https://playwright.dev)
 
 ```sh
-# Install browsers for the first run
-npx playwright install
-
 # When testing on CI, must build the project first
 npm run build
 
