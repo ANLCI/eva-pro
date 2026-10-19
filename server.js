@@ -22,7 +22,7 @@ app.use(
 );
 
 // Redirige toutes les requêtes vers index.html
-app.get('*', (req, res) => {
+app.get('/{*chemin}', (req, res) => {
   res.sendFile(path.join(process.cwd(), directory, 'index.html'));
 });
 
