@@ -154,8 +154,7 @@ const labelBoutonSuivant = computed(() => {
 })
 
 let lastLoggedQuestionNomTechnique = null // Garde-fou pour éviter les logs multiples pour la même question
-
-watch(currentQuestion, (newQuestion) => {
+const enregistreAffichageQuestion = (newQuestion) => {
   // Protection : ne pas traiter si c'est la même question ou si on est en train de finir la situation
   if (!newQuestion || isFinishingSituation.value) {
     return
@@ -184,7 +183,9 @@ watch(currentQuestion, (newQuestion) => {
   lastLoggedQuestionNomTechnique = newQuestion.nom_technique
   emit('updateCurrentQuestion', newQuestion)
   enregistreEvenementAffichageQuestion(newQuestion)
-})
+}
+
+watch(currentQuestion, enregistreAffichageQuestion)
 
 // Réinitialise l'état quand la situation ou l'index initial change
 watch(
@@ -219,10 +220,11 @@ watch(
   { immediate: true },
 )
 
-onMounted(() => {
+onMounted(async () => {
   if (currentQuestionIndex.value === 0 && situation.value) {
-    enregistreEvenementDemarrage()
+    await enregistreEvenementDemarrage()
   }
+  enregistreAffichageQuestion(currentQuestion.value)
 })
 </script>
 

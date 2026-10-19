@@ -2,6 +2,7 @@ import { test, expect } from '@playwright/test';
 
 import { mockApiCampagne } from './fixtures/campagne';
 import {
+  attendsEvenementAffichageQuestion,
   attendsEvenementReponse,
   goToCampagne,
   getQuestionnaireSelectors,
@@ -90,6 +91,15 @@ test('reprend le deuxième questionnaire', async ({ page }) => {
   const choicesList1 = page.locator('label');
   await expect(choicesList1.first()).toContainText('Oui');
   await choicesList1.first().click();
+});
+
+test("enregistre l'affichage de la première question", async ({ page }) => {
+  const evaluationId = 4;
+  await mockCampagneRoutes(page, { evaluationId });
+
+  const affichageQ1IC01 = attendsEvenementAffichageQuestion(page, 'Q1IC01');
+  await goToCampagne(page, { beneficiaireId });
+  expect(await affichageQ1IC01).toEqual({ question: 'Q1IC01' });
 });
 
 test('enregistre les scores des choix reçus avec la campagne', async ({ page }) => {
