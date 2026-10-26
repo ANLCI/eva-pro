@@ -21,7 +21,7 @@
   "dependencies": {
     "@captive_owner/vue-dsfr": "^3.7.7",
     "@gouvfr/dsfr": "~1.15.4",
-    "@tanstack/vue-query": "^5.92.0",
+    "@tanstack/vue-query": "^5.104.5",
     "express": "5.x",
     "pinia": "^4.0.3",
     "rollbar": "^4.1.0",
